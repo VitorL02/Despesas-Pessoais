@@ -14,7 +14,23 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Despesas Pessoais')),
-      body: Center(child: Text('Versão Inicial')),
+      body: Column(
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            child: Card(
+              child: Text('Grafico'),
+              elevation: 5,
+            ),
+          ),
+          Card(
+            child: Text(
+              'Lista de transações',
+            ),
+            elevation: 5,
+          )
+        ],
+      ),
     );
   }
 }
