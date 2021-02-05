@@ -13,7 +13,16 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Despesas Pessoais')),
+      appBar: AppBar(
+          title: Text(
+            'Despesas Pessoais',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontFamily: 'Raleway',
+                fontWeight: FontWeight.bold,
+                fontSize: 24),
+          ),
+          backgroundColor: Colors.deepPurple[800]),
       body: Column(
         children: <Widget>[
           Container(
