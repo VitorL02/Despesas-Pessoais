@@ -16,17 +16,15 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
           title: Text(
             'Despesas Pessoais',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'Raleway',
-                fontWeight: FontWeight.bold,
-                fontSize: 24),
+            style:
+                TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.bold),
           ),
           backgroundColor: Colors.deepPurple[800]),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
-            width: double.infinity,
             child: Card(
               child: Text('Grafico'),
               elevation: 5,
