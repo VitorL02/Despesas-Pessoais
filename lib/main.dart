@@ -61,7 +61,7 @@ class MyHomePage extends StatelessWidget {
                       )),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        tr.value.toString(),
+                        'R\$ ${tr.value.toStringAsFixed(2)}', //Interpolação de Strings,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
