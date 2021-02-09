@@ -38,7 +38,6 @@ class MyHomePage extends StatelessWidget {
           ),
           backgroundColor: Colors.deepPurple[800]),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
@@ -85,7 +84,36 @@ class MyHomePage extends StatelessWidget {
                 ),
               );
             }).toList(),
-          )
+          ),
+          Card(
+            elevation: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Titulo',
+                    ),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Valor (R\$)',
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      FlatButton(
+                          onPressed: () {},
+                          textColor: Colors.purple,
+                          child: Text('Nova Transação')),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
