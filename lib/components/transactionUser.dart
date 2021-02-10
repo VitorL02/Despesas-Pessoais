@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import './transactionForm.dart';
 import './transactionsList.dart';
@@ -24,9 +26,24 @@ class _State extends State<TransactionUser> {
     )
   ];
 
+  _addTransaction(String title, double value) {
+    final newTransaction = Transaction(
+      id: Random().nextDouble.toString(),
+      title: title,
+      value: value,
+      date: DateTime.now(),
+    );
+    setState(() {
+      _transactions.add(newTransaction);
+    });
+  }
+  //Quando uma transação for adicionada o metodo build (roda) vai atualizar e criar uma nova,o setState faz essa atualização
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: <Widget>[TransactionList(_transactions), TransactionForm()]);
+    return Column(children: <Widget>[
+      TransactionList(_transactions),
+      TransactionForm(_addTransaction)
+    ]);
   }
 }
