@@ -23,7 +23,25 @@ class _State extends State<TransactionUser> {
       title: 'Cinema',
       value: 30.50,
       date: DateTime.now(),
-    )
+    ),
+    Transaction(
+      id: 't3',
+      title: 'Cinema',
+      value: 30.50,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't4',
+      title: 'Cinema',
+      value: 30.50,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't5',
+      title: 'Cinema',
+      value: 30.50,
+      date: DateTime.now(),
+    ),
   ];
 
   _addTransaction(String title, double value) {
@@ -42,8 +60,10 @@ class _State extends State<TransactionUser> {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      TransactionList(_transactions),
-      TransactionForm(_addTransaction)
+      TransactionForm(
+          _addTransaction), //Passando  de forma indireta (por meio de uma função) componente filho chama a função na hora certa
+      TransactionList(
+          _transactions), // Passando de forma direta pai passa dados diretos pro componente filho,
     ]);
   }
 }
