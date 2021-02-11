@@ -12,9 +12,12 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      child: SingleChildScrollView(
-        child: Column(
-          children: transactions.map((tr) {
+      //SingleChildScrollView = Widget que torna  a tela scrollavel// ListView e um componente pra lista (parecido com o SingleChildScrollView )
+      child: ListView.builder(
+          //Desempenho da aplicação,define quantos itens serão renderizados (trabalha como o .map)
+          itemCount: transactions.length,
+          itemBuilder: (ctx, index) {
+            final tr = transactions[index];
             return Card(
               child: Row(
                 children: <Widget>[
@@ -49,9 +52,7 @@ class TransactionList extends StatelessWidget {
                 ],
               ),
             );
-          }).toList(),
-        ),
-      ),
+          }),
     );
   }
 }
