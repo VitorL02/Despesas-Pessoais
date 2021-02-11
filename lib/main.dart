@@ -53,6 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       _transactions.add(newTransaction);
     });
+    //Fecha o Formulario quando o submit e realizado
+    Navigator.of(context).pop();
   }
 
   @override
