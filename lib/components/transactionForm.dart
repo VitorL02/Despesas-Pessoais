@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TransactionForm extends StatelessWidget {
+  _submitForm() {
+    final title = titleController.text;
+    final value = double.tryParse(valueController.text) ?? 00;
+//Validação de Dados ,return joga novamente pra linha 5
+    if (title.isEmpty || value <= 0) {
+      return;
+    }
+    onSubmit(title, value);
+  }
+
   final valueController = TextEditingController();
   final titleController = TextEditingController();
 
@@ -25,6 +35,10 @@ class TransactionForm extends StatelessWidget {
             ),
             TextField(
               controller: valueController,
+              //Teclado numerico, o numberwithOptions serve pro IOS
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              //Chama indiretamente a função,quando confirmar no teclado numerico transação sera adicionada
+              onSubmitted: (_) => _submitForm(),
               decoration: InputDecoration(
                 labelText: 'Valor (R\$)',
               ),
@@ -33,11 +47,7 @@ class TransactionForm extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 FlatButton(
-                    onPressed: () {
-                      final title = titleController.text;
-                      final value = double.tryParse(valueController.text) ?? 00;
-                      onSubmit(title, value);
-                    },
+                    onPressed: _submitForm,
                     textColor: Colors.purple,
                     child: Text('Nova Transação')),
               ],
