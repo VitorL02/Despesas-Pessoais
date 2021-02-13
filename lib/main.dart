@@ -32,19 +32,20 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
-  final _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Conta de Agua',
-      value: 100.00,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Cinema',
-      value: 30.50,
-      date: DateTime.now(),
-    ),
+  final List<Transaction> _transactions = [
+    // Transaction(
+    // id: 't1',
+    //title: 'Conta de Agua',
+    //value: 100.00,
+    //date: DateTime.now(),
+    //),
+    //Transaction(
+    //id: 't2',
+    //title: 'Cinema',
+    //  value: 30.50,
+    //    date: DateTime.now(),
+    //),
+    //
   ];
 
   _addTransaction(String title, double value) {
@@ -71,9 +72,14 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () => _openTransactionFormModal(context),
             )
           ],
-          title: Text('Despesas Pessoais',
-              style: TextStyle(
-                  fontFamily: 'Raleway', fontWeight: FontWeight.bold)),
+          title: Text(
+            'Despesas Pessoais',
+            style: TextStyle(
+              fontFamily: 'Raleway',
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
+          ),
           backgroundColor: Colors.deepPurple[800],
         ),
         body: SingleChildScrollView(
