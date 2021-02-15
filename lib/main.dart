@@ -4,6 +4,7 @@ import 'components/transactionForm.dart';
 import 'components/transactionsList.dart';
 import 'models/transactions.dart';
 import 'dart:math';
+import './components/chart.dart';
 
 main() => runApp(ExpensesApp());
 
@@ -33,20 +34,26 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   final List<Transaction> _transactions = [
-    // Transaction(
-    // id: 't1',
-    //title: 'Conta de Agua',
-    //value: 100.00,
-    //date: DateTime.now(),
-    //),
-    //Transaction(
-    //id: 't2',
-    //title: 'Cinema',
-    //  value: 30.50,
-    //    date: DateTime.now(),
-    //),
-    //
+    Transaction(
+      id: 't1',
+      title: 'Conta de Agua',
+      value: 100.00,
+      date: DateTime.now().subtract(Duration(days: 3)),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Cinema',
+      value: 30.50,
+      date: DateTime.now(),
+    ),
   ];
+
+  //Filtrar as transações dos ultimos 7 dias
+  List<Transaction> get _recentTransactions {
+    return _transactions.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
 
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -86,12 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Container(
-                child: Card(
-                  child: Text('Grafico'),
-                  elevation: 5,
-                ),
-              ),
+              Chart(_recentTransactions),
               TransactionList(_transactions),
             ],
           ),
