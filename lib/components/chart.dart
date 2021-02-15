@@ -29,7 +29,7 @@ class Chart extends StatelessWidget {
             DateFormat.E().format(weekDay)[0], //Pega a letra do dia da semana
         'value': totalSoma
       };
-    });
+    }).reversed.toList();
   }
 
 //Soma de todos os valores da transação agrupada e retorna o valor total da semana
