@@ -14,7 +14,10 @@ class ChartBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      Text('R\$${value.toStringAsFixed(2)}'),
+      FittedBox(
+        // Diminiue o texto pra 'caber no grafico',caso o valor seja muito alto
+        child: Text('R\$${value.toStringAsFixed(2)}'),
+      ),
       SizedBox(height: 5),
       Container(
         height: 60,
