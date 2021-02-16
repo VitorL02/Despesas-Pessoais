@@ -76,7 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
         style: TextStyle(
           fontFamily: 'Raleway',
           fontWeight: FontWeight.bold,
-          fontSize: 22,
+          //Adapta a fonte de forma responsiva
+          fontSize: 22 * MediaQuery.of(context).textScaleFactor,
         ),
       ),
       backgroundColor: Colors.deepPurple[800],
