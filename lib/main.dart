@@ -33,6 +33,14 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
+  _deleteTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((tr) {
+        return tr.id == id;
+      });
+    });
+  }
+
   final List<Transaction> _transactions = [];
 
   //Filtrar as transações dos ultimos 7 dias
@@ -81,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Chart(_recentTransactions),
-              TransactionList(_transactions),
+              TransactionList(_transactions, _deleteTransaction),
             ],
           ),
         ),
