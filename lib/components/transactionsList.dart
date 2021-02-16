@@ -62,6 +62,7 @@ class TransactionList extends StatelessWidget {
                     subtitle: Text(DateFormat('EEE d MMM y').format(tr.date)),
                     trailing: IconButton(
                       icon: Icon(Icons.delete),
+                      color: Colors.redAccent,
                       onPressed: null,
                     ),
                   ),

@@ -33,20 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
-  final List<Transaction> _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Conta de Agua',
-      value: 100.00,
-      date: DateTime.now().subtract(Duration(days: 3)),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Cinema',
-      value: 30.50,
-      date: DateTime.now(),
-    ),
-  ];
+  final List<Transaction> _transactions = [];
 
   //Filtrar as transações dos ultimos 7 dias
   List<Transaction> get _recentTransactions {
@@ -55,12 +42,12 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  _addTransaction(String title, double value) {
+  _addTransaction(String title, double value, DateTime date) {
     final newTransaction = Transaction(
       id: Random().nextDouble.toString(),
       title: title,
       value: value,
-      date: DateTime.now(),
+      date: date,
     );
     setState(() {
       _transactions.add(newTransaction);
