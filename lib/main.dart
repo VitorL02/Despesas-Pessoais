@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   final List<Transaction> _transactions = [];
+  bool _showChart = false;
 
   //Filtrar as transações dos ultimos 7 dias
   List<Transaction> get _recentTransactions {
@@ -92,14 +93,30 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Container(
-                height: avaliableHeight * 0.3,
-                child: Chart(_recentTransactions),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Exibir Grafico'),
+                  Switch(
+                    value: _showChart,
+                    onChanged: (value) {
+                      setState(() {
+                        _showChart = value;
+                      });
+                    },
+                  ),
+                ],
               ),
-              Container(
-                height: avaliableHeight * 0.7,
-                child: TransactionList(_transactions, _deleteTransaction),
-              ),
+              if (_showChart)
+                Container(
+                  height: avaliableHeight * 0.3,
+                  child: Chart(_recentTransactions),
+                ),
+              if (!_showChart)
+                Container(
+                  height: avaliableHeight * 0.7,
+                  child: TransactionList(_transactions, _deleteTransaction),
+                ),
             ],
           ),
         ),
