@@ -93,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
+            backgroundColor: Colors.deepPurple[800],
             middle: Text('Despesas Pessoais'),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
@@ -116,7 +117,9 @@ class _MyHomePageState extends State<MyHomePage> {
     final avaliableHeight = mediaQuery.size.height -
         appBar.preferredSize.height -
         mediaQuery.padding.top;
-    final bodyPage = SingleChildScrollView(
+    //Ios tem particularidades de partes da tela que não são usaveis no app,safearea corrige isso na aplicação
+    final bodyPage = SafeArea(
+        child: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -147,8 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
         ],
       ),
-    );
-
+    ));
     return Platform.isIOS
         ? CupertinoPageScaffold(
             navigationBar: appBar,
