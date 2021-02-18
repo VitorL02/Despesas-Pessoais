@@ -65,9 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isLandScape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
-
+    final mediaQuery = MediaQuery.of(context);
+    bool isLandScape = mediaQuery.orientation == Orientation.landscape;
     final appBar = AppBar(
       actions: <Widget>[
         if (isLandScape)
@@ -90,15 +89,15 @@ class _MyHomePageState extends State<MyHomePage> {
           fontFamily: 'Raleway',
           fontWeight: FontWeight.bold,
           //Adapta a fonte de forma responsiva
-          fontSize: 22 * MediaQuery.of(context).textScaleFactor,
+          fontSize: 22 * mediaQuery.textScaleFactor,
         ),
       ),
       backgroundColor: Colors.deepPurple[800],
     );
     //Pega altura dinamicamente do dispositivo
-    final avaliableHeight = MediaQuery.of(context).size.height -
+    final avaliableHeight = mediaQuery.size.height -
         appBar.preferredSize.height -
-        MediaQuery.of(context).padding.top;
+        mediaQuery.padding.top;
     return Scaffold(
         appBar: appBar,
         body: SingleChildScrollView(
