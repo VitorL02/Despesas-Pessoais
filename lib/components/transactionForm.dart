@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'adaptativeButton.dart';
+import 'adaptativeTextField.dart';
 
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime)
@@ -58,22 +59,16 @@ class _TransactionFormState extends State<TransactionForm> {
           ),
           child: Column(
             children: <Widget>[
-              TextField(
+              AdaptativeTextField(
                 controller: _titleController,
                 onSubmitted: (_) => _submitForm(),
-                decoration: InputDecoration(
-                  labelText: 'Titulo',
-                ),
+                labelText: 'Titulo',
               ),
-              TextField(
+              AdaptativeTextField(
                 controller: _valueController,
-                //Teclado numerico, o numberwithOptions serve pro IOS
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
-                //Chama indiretamente a função,quando confirmar no teclado numerico transação sera adicionada
                 onSubmitted: (_) => _submitForm(),
-                decoration: InputDecoration(
-                  labelText: 'Valor (R\$)',
-                ),
+                labelText: 'Valor (R\$)',
               ),
               Container(
                 height: 60,
